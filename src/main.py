@@ -3,16 +3,6 @@ from back_end import *
 app = Flask(__name__)
 
 
-# @app.route("/")
-# def index():
-#     if request.method == 'POST':
-#         return redirect("results.html")
-#     return render_template('index.html', title="🩺 Daily Screening")
-
-# @app.route("/res", methods = ['GET', 'POST'])
-# def res():
-#     return render_template("results.html", code=1, name="Hi")
-
 @app.route("/", methods = ['GET', 'POST'])
 def index():
     if request.method == 'POST':
