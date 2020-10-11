@@ -24,3 +24,12 @@ Some technologies that were used include:
     * Compute Engine
     * AutoML Tables API
 * Github
+
+## Installation
+* [Install GCP SDK](https://cloud.google.com/sdk/docs/install)
+    * You will need to set up an project in the compute engine.
+    * After installing the GCP SDK, configure and set your project id to the project id of the compute engine.
+    * Fun begins!
+
+
+
