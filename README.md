@@ -18,11 +18,7 @@ Our overarching goal is to support pandemic management within academia,
 
 ## Design
 Some technologies that were used include:
-* Seaborn
-* React
-* Google Cloud Platform (GCP)
-    * Compute Engine
-    * AutoML Tables API
+* Flask
 * Github
 
 ## Installation
