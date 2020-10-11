@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ proj_name }}</title>
-    </head>
+{% extends "layout.html" %}
+{% block title %}Results {% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
     <body>
         {% if code == 1 %}
         <h1>Bruh {{ name }}!</h1>
@@ -12,4 +13,4 @@
         <h1>No Bruh</h1>
         {% endif %}
     </body>
-</html>
+{% endblock %}

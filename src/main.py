@@ -13,7 +13,7 @@ def index():
 
 @app.route("/res")
 def results():
-    code=1
+    num=1
     return render_template("results.html", proj_name=PROJ_NAME, code=num)
 
 if __name__ == "__main__":
