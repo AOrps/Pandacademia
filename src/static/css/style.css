@@ -5,7 +5,7 @@
 }
 
 html {
-    background-color: #fff;
+    background-color: #eae2b7;
     color: #264653;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 300;
@@ -22,7 +22,6 @@ html {
 
 body {
     margin: 20%;
-    /* background-color: #eae2b7; */
 }
 
 main {
