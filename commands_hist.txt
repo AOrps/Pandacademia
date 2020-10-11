@@ -1,0 +1,38 @@
+    1  git clone https://github.com/AOrps/Pandacademia.git
+    2  ls
+    3  cd Pandacademia/
+    4  git pull
+    5  virtualenv --python python3     ~/envs/hello_world
+    6  source     ~/envs/hello_world/bin/activate
+    7  ls
+    8  deactivate
+    9  virtualenv --python python3     ~/envs/Pandacademia
+   10  source     ~/envs/Pandacademia/bin/activate
+   11  pip install Flask==1.1.2
+   12  ls
+   13  cd src/
+   14  ls
+   15  python3 main_flask.py 
+   16  deactivate
+   17  gcloud app create
+   18  gcloud app deploy app.yaml     --project     girlhacks2020-covidscreen
+   19  cd ..
+   20  gcloud app deploy app.yaml     --project     girlhacks2020-covidscreen
+   21  gcloud app browse
+   22  cd Pandacademia/
+   23  gcloud app deploy app.yaml     --project     girlhacks2020-covidscreen
+   24  gcloud app describe --project girlhacks2020-covidscreen
+   25  touch dispatch.yaml
+   26  gcloud app deploy dispatch.yaml --project girlhacks2020-covidscreen
+   27  cd 
+   28  cd P
+   29  cd Pandacademia/
+   30  gcloud app deploy dispatch.yaml --project girlhacks2020-covidscreen
+   31  echo history > commands_hist.txt
+   32  ls
+   33  cd Pandacademia/
+   34  git push
+   35  cd Pandacademia/
+   36  history > command_hist.txt
+   37  ls
+   38  history > commands_hist.txt
