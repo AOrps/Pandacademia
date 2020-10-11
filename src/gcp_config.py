@@ -1,3 +1,0 @@
-PROJECT_ID = 'girlhacks2020-covidscreen'
-COMPUTE_REGION = 'USA'
-DATASET_DISPLAY_NAME = 'GH: DATASET'
