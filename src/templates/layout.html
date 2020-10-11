@@ -15,6 +15,7 @@
     {% endblock %}
   </head>
   <body>
+    <img src="{{ url_for('static', filename= 'photo/pandacademia.png') }}" alt="pandacademia logo" class="logo" width="100px">
     <h1>{{title}}</h1>
     <hr>
     <div id="content">{% block content %}{% endblock %}</div>
