@@ -1,0 +1,30 @@
+<!-- BLOCKS:
+    - head 
+    - title
+    - content (!)
+ -->
+ <!doctype html>
+<html>
+<div id="main">
+  <head>
+    {% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/queries.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/grid.css') }}">
+    <title>{% block title %}{% endblock %} - Pandacademia</title>
+    {% endblock %}
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <hr>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      <hr>
+      <img src="{{ url_for('static', filename= 'photo/pandacademia.png') }}" alt="pandacademia logo" class="logo" width="100px"> 
+      <p>View the <a href="https://github.com/AOrps/Pandacademia">Github Repo for Pandacademia.tech</a></p>
+      {% endblock %}
+    </div>
+  </body>
+</div>
+</html>
