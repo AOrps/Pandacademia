@@ -1,1 +1,13 @@
-__pycahce__
+# Python
+__pycache__
+
+
+# Golang
+## Binarues, plugins, libs
+.dll
+.dylib
+.exe
+.exe~
+.so
+
+

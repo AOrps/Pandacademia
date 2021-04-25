@@ -3,14 +3,13 @@
     - title
     - content (!)
  -->
- <!doctype html>
+<!doctype html>
 <html>
 <div id="main">
   <head>
     {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/queries.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/grid.css') }}">
     <title>{% block title %}{% endblock %} - Pandacademia</title>
     {% endblock %}
   </head>
@@ -23,7 +22,7 @@
       {% block footer %}
       <hr>
       <img src="{{ url_for('static', filename= 'photo/pandacademia.png') }}" alt="pandacademia logo" class="logo" width="100px"> 
-      <p>View the <a href="https://github.com/AOrps/Pandacademia">Github Repo for Pandacademia.tech</a></p>
+      <p>View the <a href="https://github.com/AOrps/Pandacademia">Github Repo</a></p>
       {% endblock %}
     </div>
   </body>

@@ -14,11 +14,7 @@ html {
     text-rendering: optimizeLegibility;
     text-align:center;
 }
-/* 
-.row {
-    max-width: 1140px;
-    margin: 0 auto;
-} */
+
 
 body {
     margin: 20%;
@@ -50,7 +46,6 @@ header {
 h1 {
     font-size:24px;
     color: #27876a;
-    /* text-shadow: 2px 2px 4px black; */
 }
 
 a {
