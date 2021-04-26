@@ -26,22 +26,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           {{range .Navs}}
-          {{if .Done}}
           <li class="nav-item">
             <a class="nav-link" href="{{.Href}}">{{.Linkname}}</a>
           </li>
-          {{end}}
           {{end}}
         </ul>
       </div>
     </div>
   </nav>
   <div class="main">
-
-
-
-
-
+    {{range .TemplateRender}}
+    {{if eq . "questions"}}
+      {{template "questions"}}
+    {{else if eq . "viz"}}
+      {{template "viz"}}
+    {{else if eq . "info" }}
+      {{template "info"}}
+    {{else if eq . "analysis"}}
+      {{template "analysis"}}
+    {{end}}
+    {{end}}
     <div class="spacer">
       <footer>
         <hr>

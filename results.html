@@ -1,0 +1,16 @@
+{{block "results" .}}
+<body>
+    {{if eq code 1}}
+    <h1>💥💥💥 High risk alert!</h1>
+    <p>Please quarantine and stay home to be safe. Contact Student Health Services ASAP!</p>
+    {{else if eq code == 2}}
+    <h1>🤨 Indeterminate risk</h1>
+    <p>We recommend staying at home if possible, and to watch your symptoms carefully.</p>
+    <p>For precaution, you can schedule a COVID test with Student Health Services.</p>
+    {{else}}
+    <h1>👍 All good!</h1>
+    <p>Remember to socially distance and wear your mask, but you seem in great health. Great job.</p>
+    {{end}}
+    <p>We appreciate your help mitigating the spread of COVID!</p>
+</body>
+{{end}}
