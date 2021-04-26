@@ -1,9 +1,4 @@
-{% extends "layout.html" %}
-{% block title %}Results {% endblock %}
-{% block head %}
-  {{ super() }}
-{% endblock %}
-{% block content %}
+{{block "results" .}}
     <body>
         {% if code == 1 %}
         <h1>💥💥💥 High risk alert!</h1>
@@ -20,4 +15,4 @@
         <p>We appreciate your help mitigating the spread of COVID!</p>
         <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
     </body>
-{% endblock %}
+{{end}}

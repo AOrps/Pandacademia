@@ -2,9 +2,12 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    margin: 5% 20% 5% 20%;
+.bg-color-main {
     background-color: #eae2b7;
+} 
+
+.main {
+    padding: 5% 20% 5% 20%;
     color: #264653;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-weight: 300;
@@ -34,6 +37,10 @@ header {
     transform: translate(-50%, -50%);
 }
 
+spacer {
+    margin-top: 2rem;
+}
+
 h1 {
     font-size:24px;
     color: #27876a;
@@ -41,6 +48,10 @@ h1 {
 
 a {
     color: #5cab7d;
+}
+
+.nav-color {
+    background-color: #7cb6df;
 }
 
 .foots-img {
