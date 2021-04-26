@@ -3,17 +3,22 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
-	"strings"
 )
 
 // CONSTANTS
 const (
 	PORT = 9990
 )
+
+// var Links = []Link{
+// 	{Linkname: "Questions", Href: "/questions", Done: true},
+// 	{Linkname: "Data Analytics", Href: "/dataAna", Done: true},
+// 	{Linkname: "Data Visulizations", Href: "/dataViz", Done: true},
+// 	{Linkname: "Info", Href: "/info", Done: true},
+// }
 
 // CUSTOM STRUCTS
 type Link struct {
@@ -22,12 +27,14 @@ type Link struct {
 	Done     bool
 }
 
-type Header struct {
-	Title string
-}
+// type RenderTemp struct {
+// 	TemplateName string
+// 	DoRender     bool
+// }
 
 type Page struct {
-	Links []Link
+	Title string
+	Navs  []Link
 }
 
 // PAGES
@@ -40,54 +47,20 @@ type Page struct {
 // }
 
 func home(w http.ResponseWriter, r *http.Request) {
-
-	var allFiles []string
-	files, err := ioutil.ReadDir("./templates")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, file := range files {
-		filename := file.Name()
-		if strings.HasSuffix(filename, ".html") {
-			allFiles = append(allFiles, "./templates/"+filename)
-		}
-	}
-
-	templates, err := template.ParseFiles(allFiles...)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	data := Page{
-		Links: []Link{
+		Title: "Home",
+		Navs: []Link{
 			{Linkname: "Questions", Href: "/questions", Done: true},
-			{Linkname: "Data Analytics", Href: "/info", Done: true},
-			{Linkname: "Data Visulizations", Href: "/info", Done: true},
+			{Linkname: "Data Analytics", Href: "/dataAna", Done: true},
+			{Linkname: "Data Visulizations", Href: "/dataViz", Done: true},
 			{Linkname: "Info", Href: "/info", Done: true},
 		},
 	}
 
-	s1 := templates.Lookup("header.html")
-	s1.ExecuteTemplate(w, "header", &Header{Title: "Home"})
+	index := template.Must(template.ParseFiles("templates/layout.html"))
+	index.Execute(w, data)
+	// index.Execute(os.Stdout, data)
 	fmt.Println()
-	s4 := template.Lookup("navbar.html")
-	// TEMPLATE Name must be referred to in  ExecuteTemplate
-	s2 := templates.Lookup("base.html")
-	s2.ExecuteTemplate(w, "content", data)
-	fmt.Println()
-	s3 := templates.Lookup("footer.html")
-	s3.ExecuteTemplate(w, "footer", nil)
-	fmt.Println()
-	// s3.Execute(os.Stdout, nil)
-	// head := template.Must(template.ParseFiles("templates/header.html"))
-	// head.Execute(w, &Header{Title: "Home"})
-	// index := template.Must(template.ParseFiles("templates/base.html"))
-	// index.Execute(w, data)
-	// foot := template.Must(template.ParseFiles("templates/footer.html"))
-	// foot.Execute(w, nil)
-
 }
 
 func questionsHandler(w http.ResponseWriter, r *http.Request) {
