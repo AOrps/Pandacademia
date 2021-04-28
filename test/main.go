@@ -15,43 +15,22 @@ const (
 	PORT = 9991
 )
 
+type Header struct {
+	Title string
+}
+
 func home(w http.ResponseWriter, r *http.Request) {
 
-	index := template.Must(template.ParseGlob("templates/*.html"))
+	layout := template.Must(template.ParseFiles("templates/layout.html"))
 
-	data := L.Page{
-		Title: "Home",
-		Navs: []L.Link{
-			{Linkname: "Questions", Href: "/questions"},
-			{Linkname: "Data Analytics", Href: "/analysis"},
-			{Linkname: "Data Visulizations", Href: "/viz"},
-			{Linkname: "Info", Href: "/info"},
-		},
-		TemplateRender: []string{"questions", "viz"},
-	}
-
-	index.ExecuteTemplate(w, "layout", data)
-	index.ExecuteTemplate(w, "questions", nil)
-	// index.ExecuteTemplate(os.Stdout, "layout", data) // To see from STDOUT
+	layout.ExecuteTemplate(w, "header", "start")
+	layout.ExecuteTemplate(w, "navNbody", L.GetNavBar())
+	layout.ExecuteTemplate(w, "footer", nil)
 	fmt.Println()
 }
 
 func questionsHandler(w http.ResponseWriter, r *http.Request) {
-	index := template.Must(template.ParseGlob("templates/*.html"))
-
-	data := L.Page{
-		Title: "Home",
-		Navs: []L.Link{
-			{Linkname: "Questions", Href: "/questions"},
-			{Linkname: "Data Analytics", Href: "/analysis"},
-			{Linkname: "Data Visulizations", Href: "/viz"},
-			{Linkname: "Info", Href: "/info"},
-		},
-		TemplateRender: []string{"questions"},
-	}
-
-	index.ExecuteTemplate(w, "layout", data)
-	fmt.Println()
+	fmt.Fprint(w, "results")
 
 	if r.Method == http.MethodPost {
 		fmt.Fprint(w, "Questions with POST")
@@ -59,57 +38,18 @@ func questionsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func analysisHandler(w http.ResponseWriter, r *http.Request) {
-	index := template.Must(template.ParseGlob("templates/*.html"))
-
-	data := L.Page{
-		Title: "Home",
-		Navs: []L.Link{
-			{Linkname: "Questions", Href: "/questions"},
-			{Linkname: "Data Analytics", Href: "/analysis"},
-			{Linkname: "Data Visulizations", Href: "/viz"},
-			{Linkname: "Info", Href: "/info"},
-		},
-		TemplateRender: []string{"analysis"},
-	}
-
-	index.ExecuteTemplate(w, "layout", data)
-	fmt.Println()
+	fmt.Fprint(w, "results")
 }
 
 func vizHandler(w http.ResponseWriter, r *http.Request) {
-	index := template.Must(template.ParseGlob("templates/*.html"))
-
-	data := L.Page{
-		Title: "Home",
-		Navs: []L.Link{
-			{Linkname: "Questions", Href: "/questions"},
-			{Linkname: "Data Analytics", Href: "/analysis"},
-			{Linkname: "Data Visulizations", Href: "/viz"},
-			{Linkname: "Info", Href: "/info"},
-		},
-		TemplateRender: []string{"viz"},
-	}
-
-	index.ExecuteTemplate(w, "layout", data)
-	fmt.Println()
+	fmt.Fprint(w, "results")
 }
 
 func infoHandler(w http.ResponseWriter, r *http.Request) {
-	index := template.Must(template.ParseGlob("templates/*.html"))
 
-	data := L.Page{
-		Title: "Home",
-		Navs: []L.Link{
-			{Linkname: "Questions", Href: "/questions"},
-			{Linkname: "Data Analytics", Href: "/analysis"},
-			{Linkname: "Data Visulizations", Href: "/viz"},
-			{Linkname: "Info", Href: "/info"},
-		},
-		TemplateRender: []string{"info"},
-	}
+	page := L.Page{Title: "Info", Location: "info"}
 
-	index.ExecuteTemplate(w, "layout", data)
-	fmt.Println()
+	L.SetupPage(w, page, true)
 }
 
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
@@ -167,3 +107,12 @@ func main() {
 // 		fmt.Println(tmplName)
 // 	}
 // }
+
+// NEW BASE
+// index := template.Must(template.ParseGlob("templates/*.html"))
+
+// header := Header{Title: "bruh"}
+
+// index.ExecuteTemplate(w, "header", header)
+// index.ExecuteTemplate(w, "navNbody", L.GetNavBar())
+// index.ExecuteTemplate(w, "footer", nil)
