@@ -28,7 +28,7 @@ func GetNavBar() []Link {
 	yes := []Link{
 		{Linkname: "Questions", Href: "/questions"},
 		{Linkname: "Data Analytics", Href: "/analysis"},
-		{Linkname: "Data Visulizations", Href: "/viz"},
+		{Linkname: "Data Visulization", Href: "/viz"},
 		{Linkname: "Info", Href: "/info"},
 	}
 	return yes

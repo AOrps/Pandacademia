@@ -9,10 +9,6 @@
 .main {
     padding: 5% 15% 5% 15%;
     color: #264653;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 150%;
     text-rendering: optimizeLegibility;
     text-align:center;
 }
@@ -31,7 +27,7 @@ header {
 
 .text-box {
     position: absolute;
-    width: 1140px;
+    /* width: 1140px; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -42,7 +38,6 @@ spacer {
 }
 
 h1 {
-    font-size:24px;
     color: #27876a;
 }
 

@@ -20,18 +20,23 @@ type Header struct {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
+	layout := template.Must(template.ParseGlob("templates/*.html"))
 
-	layout := template.Must(template.ParseFiles("templates/layout.html"))
-
-	layout.ExecuteTemplate(w, "header", "start")
+	layout.ExecuteTemplate(w, "header", "🩺 Daily Screening")
 	layout.ExecuteTemplate(w, "navNbody", L.GetNavBar())
+	layout.ExecuteTemplate(w, "questions", nil)
+	layout.ExecuteTemplate(w, "viz", nil)
 	layout.ExecuteTemplate(w, "footer", nil)
 	fmt.Println()
+
+	if r.Method == http.MethodPost {
+		fmt.Fprintf(w, "Root with POST")
+	}
 }
 
 func questionsHandler(w http.ResponseWriter, r *http.Request) {
 
-	page := L.Page{Title: "Screening", Location: "questions"}
+	page := L.Page{Title: "Questions", Location: "questions"}
 
 	L.SetupSinglePage(w, page, false)
 
@@ -59,6 +64,16 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 	L.SetupSinglePage(w, page, false)
 }
 
+func testFunc(w http.ResponseWriter, r *http.Request) {
+	page := L.Page{Title: "Questions", Location: "test-quest"}
+
+	L.SetupSinglePage(w, page, false)
+
+	if r.Method == http.MethodPost {
+		fmt.Fprint(w, "Questions with POST")
+	}
+}
+
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "results")
 }
@@ -77,6 +92,7 @@ func main() {
 	http.HandleFunc("/viz/", vizHandler)
 	http.HandleFunc("/info/", infoHandler)
 	http.HandleFunc("/results/", resultsHandler)
+	http.HandleFunc("/test/", testFunc)
 
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(PORT), nil))
 }
