@@ -20,13 +20,6 @@ type Page struct {
 	Location string
 }
 
-// type Page struct {
-// 	Title          string
-// 	Navs           []Link
-// 	TemplateRender []string
-// 	Cra            Crank
-// }
-
 // ===============================================
 // Functions
 // ===============================================
@@ -42,19 +35,14 @@ func GetNavBar() []Link {
 }
 
 // Automates the creation of Handlers
-// func MakeHandler(fn func(http.ResponseWriter, *http.Request, Page)) http.HandlerFunc {
-// 	return func(w http.ResponseWriter, r *http.Request, p Page) {
-// 		layout := template.Must(template.ParseFiles("templates/layout.html"))
+func MakeHandler(fn func(http.ResponseWriter, *http.Request, Page)) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
 
-// 		layout.ExecuteTemplate(w, "header", p.Title)
-// 		layout.ExecuteTemplate(w, "navNbody", GetNavBar())
+	}
+}
 
-// 		layout.ExecuteTemplate(w, "footer", nil)
-
-// 	}
-// }
-
-func SetupPage(w http.ResponseWriter, p Page, debug bool) {
+// Specific Function that Parses Page and Executes that Template
+func SetupSinglePage(w http.ResponseWriter, p Page, debug bool) {
 	layout := template.Must(template.ParseFiles("templates/layout.html"))
 
 	loc := p.Location

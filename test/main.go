@@ -30,7 +30,10 @@ func home(w http.ResponseWriter, r *http.Request) {
 }
 
 func questionsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "results")
+
+	page := L.Page{Title: "Screening", Location: "questions"}
+
+	L.SetupSinglePage(w, page, false)
 
 	if r.Method == http.MethodPost {
 		fmt.Fprint(w, "Questions with POST")
@@ -38,18 +41,22 @@ func questionsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func analysisHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "results")
+	page := L.Page{Title: "Data Analysis", Location: "analysis"}
+
+	L.SetupSinglePage(w, page, false)
 }
 
 func vizHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "results")
+	page := L.Page{Title: "Data Visualization", Location: "viz"}
+
+	L.SetupSinglePage(w, page, false)
 }
 
 func infoHandler(w http.ResponseWriter, r *http.Request) {
 
 	page := L.Page{Title: "Info", Location: "info"}
 
-	L.SetupPage(w, page, true)
+	L.SetupSinglePage(w, page, false)
 }
 
 func resultsHandler(w http.ResponseWriter, r *http.Request) {
@@ -73,46 +80,3 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(PORT), nil))
 }
-
-// PAGES
-
-// func makeHandler(fn func(http.ResponseWriter, *http.Request, Page)) http.HandlerFunc {
-// 	return func(w http.ResponseWriter, r *http.Request) {
-// 		m := valid
-
-// 	}
-// }
-
-// data := Page{
-// 	Title: "Home",
-// 	Navs: []Link{
-// 		{Linkname: "Questions", Href: "/questions", Done: true},
-// 		{Linkname: "Data Analytics", Href: "/dataAna", Done: true},
-// 		{Linkname: "Data Visulizations", Href: "/dataViz", Done: true},
-// 		{Linkname: "Info", Href: "/info", Done: true},
-// 	},
-// 	TemplateRender: []RenderTemp{
-// 		{TemplateName: "questions"},
-// 		{TemplateName: "dataAna"},
-// 		{TemplateName: "dataViz"},
-// 		{TemplateName: "info", Render: false},
-// 		{TemplateName: "results"},
-// 	},
-// }
-
-// for _, val := range data.TemplateRender {
-// 	tmplName := val.TemplateName
-// 	if val.Render {
-// 		index.ExecuteTemplate(w, tmplName, nil)
-// 		fmt.Println(tmplName)
-// 	}
-// }
-
-// NEW BASE
-// index := template.Must(template.ParseGlob("templates/*.html"))
-
-// header := Header{Title: "bruh"}
-
-// index.ExecuteTemplate(w, "header", header)
-// index.ExecuteTemplate(w, "navNbody", L.GetNavBar())
-// index.ExecuteTemplate(w, "footer", nil)
