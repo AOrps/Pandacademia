@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 
 	L "./lib"
@@ -15,8 +16,9 @@ const (
 	PORT = 9991
 )
 
-type Header struct {
-	Title string
+type questPage struct {
+	Question string
+	Type     string
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -64,10 +66,29 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 	L.SetupSinglePage(w, page, false)
 }
 
+// TEST
 func testFunc(w http.ResponseWriter, r *http.Request) {
-	page := L.Page{Title: "Questions", Location: "test-quest"}
+	layout := template.Must(template.ParseGlob("templates/*.html"))
 
-	L.SetupSinglePage(w, page, false)
+	testData := []questPage{
+		{Question: "Are you feeling sick?", Type: "radio"},
+		{Question: "Do you have muscle soreness or respiratory trouble that you can’t attribute to another medical condition?", Type: "radio"},
+		{Question: "Have you recently had close contact (within 6 feet of an infected person for at least 15 minutes) with someone with symptoms of COVID-19, tested for COVID-19, or diagnosed with COVID-19?", Type: "radio"},
+		{Question: "Have you recently been in a nursing home, healthcare facility, or homeless shelter?", Type: "radio"},
+	}
+
+	layout.ExecuteTemplate(w, "header", "🩺 Daily Screening")
+	layout.ExecuteTemplate(w, "navNbody", L.GetNavBar())
+	layout.ExecuteTemplate(w, "test-quest", testData)
+	layout.ExecuteTemplate(w, "footer", nil)
+
+	// Debug
+	layout.ExecuteTemplate(os.Stdout, "header", "🩺 Daily Screening")
+	layout.ExecuteTemplate(os.Stdout, "navNbody", L.GetNavBar())
+	layout.ExecuteTemplate(os.Stdout, "test-quest", testData)
+	layout.ExecuteTemplate(os.Stdout, "footer", nil)
+
+	fmt.Println()
 
 	if r.Method == http.MethodPost {
 		fmt.Fprint(w, "Questions with POST")
