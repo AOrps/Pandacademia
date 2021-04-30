@@ -2,17 +2,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-.bg-color-main {
-    background-color: #eae2b7;
-} 
-
-.main {
-    padding: 5% 15% 5% 15%;
-    color: #264653;
-    text-rendering: optimizeLegibility;
-    text-align:center;
-}
-
 hr {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -25,20 +14,31 @@ header {
     background-position: center;
 }
 
-form {
-    text-align: center;
-}
-
-spacer {
-    margin-top: 2rem;
-}
-
 h1 {
     color: #27876a;
 }
 
 a {
     color: #5cab7d;
+}
+
+label {
+    text-align: center;
+}
+
+.bg-color-main {
+    background-color: #eae2b7;
+} 
+
+.main {
+    padding: 5% 15% 5% 15%;
+    color: #264653;
+    text-rendering: optimizeLegibility;
+    text-align:center;
+}
+
+.spacer {
+    margin-top: 2rem;
 }
 
 .nav-color {

@@ -19,6 +19,7 @@ const (
 type questPage struct {
 	Question string
 	Type     string
+	Name     string
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -71,10 +72,10 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 	layout := template.Must(template.ParseGlob("templates/*.html"))
 
 	testData := []questPage{
-		{Question: "Are you feeling sick?", Type: "radio"},
-		{Question: "Do you have muscle soreness or respiratory trouble that you can’t attribute to another medical condition?", Type: "radio"},
-		{Question: "Have you recently had close contact (within 6 feet of an infected person for at least 15 minutes) with someone with symptoms of COVID-19, tested for COVID-19, or diagnosed with COVID-19?", Type: "radio"},
-		{Question: "Have you recently been in a nursing home, healthcare facility, or homeless shelter?", Type: "radio"},
+		{Question: "Are you feeling sick?", Type: "radio", Name: "sick"},
+		{Question: "Do you have muscle soreness or respiratory trouble that you can’t attribute to another medical condition?", Type: "radio", Name: "sore"},
+		{Question: "Have you recently had close contact (within 6 feet of an infected person for at least 15 minutes) with someone with symptoms of COVID-19, tested for COVID-19, or diagnosed with COVID-19?", Type: "radio", Name: "contact"},
+		{Question: "Have you recently been in a nursing home, healthcare facility, or homeless shelter?", Type: "radio", Name: "location"},
 	}
 
 	layout.ExecuteTemplate(w, "header", "🩺 Daily Screening")
