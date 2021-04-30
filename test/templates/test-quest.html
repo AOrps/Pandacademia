@@ -1,38 +1,43 @@
 {{block "test-quest" .}}
+{{if .Ask}}
 <h1>🩺 Daily Screening</h1>
 <hr>
 <h6>Welcome! Thanks for remembering to check in.</h6>
 <form method="POST">    
     <p>
-    <h4>Name:</h4>
+    <h5>Name:</h5>
     </p>
     <p><input type="text" name="nm" /></p>
 
     <p>
-    <h4>How are you feeling today? (between 1 and 5):</h4>
+    <h5>How are you feeling today? (between 1 and 5):</h5>
     </p>
     <input type="range" name="feeling" value="1" min="1" max="5" oninput="this.nextElementSibling.value = this.value">
     <output>1</output>
 
     <p>
-    <h4>What is your temperature today?:</h4>
+    <h5>What is your temperature today?:</h5>
     </p>
     <p><input type="text" name="temp" min="95.0" max="130.0"></p>
 
-    {{range .}}
+    {{range .Questions}}
         {{if eq .Type "radio"}}
-        <h4>{{.Question}}</h4>
+        <h5>{{.QuestionText}}</h5>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{.Name}}">
+            <input class="form-check-input" type="radio" name="{{.NameElement}}" value="Yes">
             <label class="form-check-label">Yes</label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="{{.Name}}">
+            <input class="form-check-input" type="radio" name="{{.NameElement}}" value="No">
             <label class="form-check-label">No</label>
         </div>
         {{end}}
     {{end}}
 
-    <p class="spacer"><input type="submit" value="Submit" /></p>
+    <p class="spacer"><input type="submit" value="Submit"/></p>
 </form>
+{{else}}
+    {{template "results" .Code}}
+{{end}}
+
 {{end}}

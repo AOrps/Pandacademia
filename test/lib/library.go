@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"os"
@@ -17,6 +18,15 @@ type Link struct {
 
 type Page struct {
 	Title    string
+	Location string
+}
+
+type Results struct {
+	Code string
+}
+
+type trialType struct {
+	Templ    *template.Template
 	Location string
 }
 
@@ -60,4 +70,10 @@ func SetupSinglePage(w http.ResponseWriter, p Page, debug bool) {
 		purpose.ExecuteTemplate(os.Stdout, loc, nil)
 		layout.ExecuteTemplate(os.Stdout, "footer", nil)
 	}
+}
+
+// Does all the backend and Routes the Questions,
+func Backend(w http.ResponseWriter, r *http.Request) {
+	yes := "bruh"
+	fmt.Println(yes)
 }

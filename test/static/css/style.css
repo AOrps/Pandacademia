@@ -18,11 +18,15 @@ h1 {
     color: #27876a;
 }
 
+h5 {
+    font-weight: bold;
+}
+
 a {
     color: #5cab7d;
 }
 
-label {
+input {
     text-align: center;
 }
 
