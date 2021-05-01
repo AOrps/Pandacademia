@@ -1,4 +1,5 @@
 # Pandacademia
+[![Go](https://github.com/AOrps/Pandacademia/actions/workflows/go.yml/badge.svg)](https://github.com/AOrps/Pandacademia/actions/workflows/go.yml)
 
 ## Background 
 

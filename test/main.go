@@ -97,6 +97,8 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 			layout.ExecuteTemplate(w, "test-quest", test)
 			layout.ExecuteTemplate(w, "footer", nil)
 			return
+		} else {
+			fmt.Fprintf(w, "Fill out all questions!")
 		}
 
 	}
