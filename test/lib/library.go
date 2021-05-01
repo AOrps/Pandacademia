@@ -11,11 +11,6 @@ import (
 // Types
 // ===============================================
 
-type Link struct {
-	Linkname string
-	Href     string
-}
-
 type Page struct {
 	Title    string
 	Location string
@@ -33,16 +28,6 @@ type trialType struct {
 // ===============================================
 // Functions
 // ===============================================
-
-func GetNavBar() []Link {
-	yes := []Link{
-		{Linkname: "Questions", Href: "/questions"},
-		{Linkname: "Data Analytics", Href: "/analysis"},
-		{Linkname: "Data Visulization", Href: "/viz"},
-		{Linkname: "Info", Href: "/info"},
-	}
-	return yes
-}
 
 // Automates the creation of Handlers
 func MakeHandler(fn func(http.ResponseWriter, *http.Request, Page)) http.HandlerFunc {

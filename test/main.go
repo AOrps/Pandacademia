@@ -15,16 +15,6 @@ const (
 	PORT = 9991
 )
 
-type Answers struct {
-	Name        string
-	Feeling     string
-	Temperature string
-	Sick        string
-	Sore        string
-	Contact     string
-	Location    string
-}
-
 type Question struct {
 	QuestionText string
 	Type         string
@@ -91,7 +81,7 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodPost {
 
-		answers := Answers{
+		answers := L.Answers{
 			Name:        r.FormValue("nm"),
 			Feeling:     r.FormValue("feeling"),
 			Temperature: r.FormValue("temp"),
@@ -101,7 +91,11 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 			Location:    r.FormValue("location"),
 		}
 
+		answers.PrintAll()
 		fmt.Println(answers)
+
+		try := answers.CheckAll()
+		fmt.Println(try)
 
 		fmt.Fprint(w, "Questions with POST")
 
@@ -132,7 +126,7 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 		Code: "0",
 	}
 
-	answers := Answers{
+	answers := L.Answers{
 		Name:        r.FormValue("nm"),
 		Feeling:     r.FormValue("feeling"),
 		Temperature: r.FormValue("temp"),
