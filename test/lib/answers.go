@@ -2,6 +2,7 @@ package lib
 
 import (
 	"fmt"
+	"net/http"
 	"strconv"
 	"strings"
 )
@@ -36,7 +37,20 @@ func iter(arr []string, f func(string)) {
 	}
 }
 
-// CheckAll -> Checks if all the values are filled
+// GetAnswers() -> Gets Form Value for *http.Request
+func GetAnswers(r *http.Request) Answers {
+	return Answers{
+		Name:        r.FormValue("nm"),
+		Feeling:     r.FormValue("feeling"),
+		Temperature: r.FormValue("temp"),
+		Sick:        r.FormValue("sick"),
+		Sore:        r.FormValue("sore"),
+		Contact:     r.FormValue("contact"),
+		Location:    r.FormValue("location"),
+	}
+}
+
+// CheckAll() -> Checks if all the values are filled
 func (a Answers) CheckAll() bool {
 	answers := a.makeStrArray()
 
@@ -50,7 +64,7 @@ func (a Answers) CheckAll() bool {
 	return retBool
 }
 
-// PrintAll -> Prints all the values
+// PrintAll() -> Prints all the values
 func (a Answers) PrintAll() {
 	answers := a.makeStrArray()
 

@@ -70,24 +70,16 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == http.MethodPost {
 
-		answers := L.Answers{
-			Name:        r.FormValue("nm"),
-			Feeling:     r.FormValue("feeling"),
-			Temperature: r.FormValue("temp"),
-			Sick:        r.FormValue("sick"),
-			Sore:        r.FormValue("sore"),
-			Contact:     r.FormValue("contact"),
-			Location:    r.FormValue("location"),
-		}
+		answers := L.GetAnswers(r)
 
-		answers.PrintAll()
+		fmt.Println(answers)
 
 		try := answers.CheckAll()
 		fmt.Println(try)
 		if try {
 			test := L.QuestionPage{
 				Ask:       false,
-				Questions: *L.MakeQuestionArr(),
+				Questions: L.MakeQuestionArr(),
 				Code:      answers.Calc(),
 			}
 
@@ -102,8 +94,8 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 
 	testData := L.QuestionPage{
 		Ask:       true,
-		Questions: *L.MakeQuestionArr(),
-		Code:      int8(0),
+		Questions: L.MakeQuestionArr(),
+		Code:      0,
 	}
 
 	layout.ExecuteTemplate(w, "test-quest", testData)
