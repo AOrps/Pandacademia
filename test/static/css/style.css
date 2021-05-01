@@ -30,6 +30,11 @@ input {
     text-align: center;
 }
 
+output {
+    color: #27876a;
+    font-weight: bold;
+}
+
 .bg-color-main {
     background-color: #eae2b7;
 } 

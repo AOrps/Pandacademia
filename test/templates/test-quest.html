@@ -11,9 +11,12 @@
 
     <p>
     <h5>How are you feeling today? (between 1 and 5)</h5>
+    <p>1 being terrible, 5 being amazing</p>
     </p>
+    <div class="row">
     <input type="range" name="feeling" min="1" max="5" oninput="this.nextElementSibling.value = this.value">
-    <output>1</output>
+    <output></output>
+    </div>
 
     <p>
     <h5>What is your temperature today?</h5>
@@ -21,13 +24,11 @@
     <p><input type="text" name="temp" min="95.0" max="130.0"></p>
 
     {{range .Questions}}
-        {{if eq .Type "radio"}}
         <h5>{{.QuestionText}}</h5>
         <input class="form-check-input" type="radio" name="{{.NameElement}}" value="Yes">
         <label class="form-check-label">Yes</label>
         <input class="form-check-input" type="radio" name="{{.NameElement}}" value="No">
         <label class="form-check-label">No</label>
-        {{end}}
     {{end}}
 
     <p class="spacer"><input type="submit" value="Submit"/></p>
@@ -35,5 +36,4 @@
 {{else}}
     {{template "results" .Code}}
 {{end}}
-
 {{end}}

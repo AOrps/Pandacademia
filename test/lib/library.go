@@ -1,7 +1,6 @@
 package lib
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"os"
@@ -55,10 +54,4 @@ func SetupSinglePage(w http.ResponseWriter, p Page, debug bool) {
 		purpose.ExecuteTemplate(os.Stdout, loc, nil)
 		layout.ExecuteTemplate(os.Stdout, "footer", nil)
 	}
-}
-
-// Does all the backend and Routes the Questions,
-func Backend(w http.ResponseWriter, r *http.Request) {
-	yes := "bruh"
-	fmt.Println(yes)
 }
