@@ -48,6 +48,7 @@ python3 main.py
 We wanted to include these data visualizations created by Jing Huo, but embeds were blocked so we weren't able to.
 https://colab.research.google.com/drive/1Hevj4QlZUzTOwBiTdwBUGzCWtS-MX87m?usp=sharing
 
+* Temperature input as fahrenheit
 
 ## Version 
 ### Python3, Flask

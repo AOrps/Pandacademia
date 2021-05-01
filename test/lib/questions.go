@@ -12,7 +12,7 @@ type Question struct {
 type QuestionPage struct {
 	Ask       bool
 	Questions []Question
-	Code      string
+	Code      int8
 }
 
 // ===============================================

@@ -1,10 +1,10 @@
 {{block "results" .}}
-{{if ne . "0"}}
+{{if ne . 0}}
 <body>
-    {{if eq . "1"}}
+    {{if eq . 1}}
     <h1>💥💥💥 High risk alert!</h1>
     <p>Please quarantine and stay home to be safe. Contact Student Health Services ASAP!</p>
-    {{else if eq . "2"}}
+    {{else if eq . 2}}
     <h1>🤨 Indeterminate risk</h1>
     <p>We recommend staying at home if possible, and to watch your symptoms carefully.</p>
     <p>For precaution, you can schedule a COVID test with Student Health Services.</p>

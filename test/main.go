@@ -81,17 +81,14 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 		}
 
 		answers.PrintAll()
-		fmt.Println(answers)
 
 		try := answers.CheckAll()
 		fmt.Println(try)
 		if try {
-			fmt.Fprint(w, "Questions with POST")
-
 			test := L.QuestionPage{
 				Ask:       false,
 				Questions: *L.MakeQuestionArr(),
-				Code:      "2",
+				Code:      answers.Calc(),
 			}
 
 			layout.ExecuteTemplate(w, "test-quest", test)
@@ -106,7 +103,7 @@ func testFunc(w http.ResponseWriter, r *http.Request) {
 	testData := L.QuestionPage{
 		Ask:       true,
 		Questions: *L.MakeQuestionArr(),
-		Code:      "0",
+		Code:      int8(0),
 	}
 
 	layout.ExecuteTemplate(w, "test-quest", testData)
