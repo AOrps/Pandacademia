@@ -24,24 +24,28 @@ Our overarching goal is to support pandemic management within academia.
 
 ## Usage
 
-### Golang Version :sunglasses: (Future design / testing)
 * With `Make`
 ```sh
-cd test/
+cd src/
 make run
 ```
 * Without `Make`
 ```sh
-cd test/
+cd src/
 go build main.go
 ./main
 ```
 
-### <!--Cringe --> Legacy Python :frowning:
+* Next go to [`localhost:9991`](http://localhost:9991) and serve should be all running in there 
+
+### <!--Cringe --> Legacy Python
+* To Use this version, check the Commit Logs
 ```sh
 cd src/
 python3 main.py
 ```
+
+
 
 
 ## Considerations
@@ -56,6 +60,6 @@ https://colab.research.google.com/drive/1Hevj4QlZUzTOwBiTdwBUGzCWtS-MX87m?usp=sh
 
 ### Golang, Bootstrap
 * Top of Root Page
-![](img/top-go.png)
+![](img/top-root-go.png)
 * Bottom of Root Page
-![](img/bottom-go.png)
+![](img/bottom-root-go.png)
