@@ -1,5 +1,10 @@
 package lib
 
+import (
+	"fmt"
+	"net/http"
+)
+
 // ===============================================
 // Types
 // ===============================================
@@ -30,6 +35,15 @@ func MakeQuestionArr() []Question {
 }
 
 // PostRequest() -> Functionality for the Post Requests / Questions / Daily Screening in one func
-func PostRequest() {
+func PostRequest(w http.ResponseWriter, r *http.Request) {
+	answers := GetAnswers(r)
+
+	answeredAll := answers.CheckAll()
+
+	if answeredAll {
+		fmt.Println("Bruh")
+	} else {
+		fmt.Fprintf(w, "Fill out all questions!")
+	}
 
 }
