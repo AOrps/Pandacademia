@@ -1,14 +1,10 @@
-# Python
-__pycache__
-
-
-# Golang
-## Binarues, plugins, libs
+## Binaries, plugins, libs
 .dll
 .dylib
 .exe
 .exe~
 .so
 
+# Golang Files
 main
 
